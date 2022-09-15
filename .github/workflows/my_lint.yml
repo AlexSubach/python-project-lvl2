@@ -6,7 +6,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     strategy:
       matrix:
         python-version: ["3.9", "3.10"]
@@ -26,10 +26,10 @@ jobs:
       - name: Run test
         run: |
           make test
-    - name: Test & publish code coverage
-      uses: paambaati/codeclimate-action@v3.0.0
-      env:
-        CC_TEST_REPORTER_ID: 876cb986512a0f4ea5b6087f9a8291ab84ba23de84e73af32fc8932525f0b262
-      with:
-        coverageCommand: make test-coverage
-        debug: true
+      - name: Test & publish code coverage
+        uses: paambaati/codeclimate-action@v3.0.0
+        env:
+          CC_TEST_REPORTER_ID: 876cb986512a0f4ea5b6087f9a8291ab84ba23de84e73af32fc8932525f0b262
+        with:
+          coverageCommand: make test-coverage
+          debug: true

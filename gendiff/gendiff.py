@@ -1,4 +1,3 @@
-# import json
 import os
 from gendiff.parser import parse
 

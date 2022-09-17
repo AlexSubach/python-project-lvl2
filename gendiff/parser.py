@@ -4,6 +4,6 @@ import yaml
 
 def parse(file, extension):
     if extension == ".json":
-        return json.load(file)
+        return json.load(open(file))
     elif extension == ".yaml" or extension == ".yml":
-        return yaml.safe_load(file)
+        return yaml.safe_load(open(file))

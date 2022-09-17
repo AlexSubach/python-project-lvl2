@@ -5,8 +5,8 @@ from gendiff.cli import pars
 
 
 def main():
-    args = pars()
-    print(generate_diff(args[0], args[1]))
+    first_file, second_file, formats = pars()
+    print(generate_diff(first_file, second_file, formats))
 
 
 if __name__ == '__main__':

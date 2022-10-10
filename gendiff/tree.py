@@ -1,45 +1,23 @@
-def build_tree(dict_1, dict_2):
-    keys = dict_1.keys() | dict_2.keys()
+def make_children(dict1, dict2):
     result = []
+    keys = dict1.keys() | dict2.keys()
     for key in sorted(keys):
-        child_1 = dict_1.get(key)
-        child_2 = dict_2.get(key)
-        if key not in dict_1:
-            result.append({
-                'key': key,
-                'type': 'added',
-                'value': child_2
-            })
-        elif key not in dict_2:
-            result.append({
-                'key': key,
-                'type': 'removed',
-                'value': child_1
-            })
-        elif isinstance(child_1, dict) and isinstance(child_2, dict):
-            result.append({
-                'key': key,
-                'type': 'nested',
-                'children': make_tree(child_1, child_2),
-            })
-        elif child_1 == child_2:
-            result.append({
-                'key': key,
-                'type': 'unchanged',
-                'value': child_1,
-            })
+        if key not in dict1:
+            result.append({"key": key, "type": "added", "value": dict2[key]})
+
+        elif key not in dict2:
+            result.append({"key": key, "type": "removed", "value": dict1[key]})
+
+        elif isinstance(dict1[key], dict) and isinstance(dict2[key], dict):
+            result.append({"key": key, "type": "parent", "children": make_children(dict1[key], dict2[key])})
+
+        elif dict1[key] == dict2[key]:
+            result.append({"key": key, "type": "unchanged", "value": dict1[key]})
+
         else:
-            result.append({
-                'key': key,
-                'type': 'changed',
-                'old_value': child_1,
-                'new_value': child_2,
-            })
+            result.append({"key": key, "type": "updated", "old_value": dict1[key], "new_value": dict2[key]})
     return result
 
 
-def make_tree(dict_1, dict_2):
-    return {
-        'type': 'root',
-        'children': build_tree(dict_1, dict_2)
-    }
+def make_tree(dict1, dict2):
+    return {"type": "root", "children": make_children(dict1, dict2)}

@@ -1,6 +1,6 @@
-from gendiff.formatters.stylish import formatting_stylish
+from gendiff.formatters.stylish import render_stylish
 
 
-def formatting(tree, format_name):
+def formatting(result_dict, format_name="stylish"):
     if format_name == "stylish":
-        return formatting_stylish(tree)
+        return render_stylish(result_dict)

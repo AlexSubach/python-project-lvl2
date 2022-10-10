@@ -1,12 +1,6 @@
-import os
-from gendiff.parser import parse
+from gendiff.parser import get_file_extension
 from gendiff.tree import make_tree
 from gendiff.formatter import formatting
-
-
-def get_file_extension(file_path):
-    (name, file_extension) = os.path.splitext(file_path)
-    return parse(file_path, file_extension)
 
 
 def generate_diff(file_path1, file_path2, format_name='stylish'):

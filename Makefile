@@ -1,17 +1,17 @@
 lint:
 	poetry run flake8 gendiff
 test:
-	poetry run pytest
+	poetry run pytest -vv
 
-restart: install build publish
+restart: install build publish package-reinstall
 install:
 	poetry install
 build:
 	poetry build
 publish:
 	poetry publish --dry-run
-#package-reinstall:
-#	python3 -m pip install --force-reinstal --user dist/*.whl
+package-reinstall:
+	python3 -m pip install --force-reinstal dist/*.whl
 package-install:
 	python3 -m pip install --user dist/*.whl
 test-coverage:

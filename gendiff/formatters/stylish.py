@@ -12,8 +12,11 @@ def to_str(value, depth):
     elif isinstance(value, dict):
         indent = build_indent(depth)
         big_indent = indent + (" " * 6)
+        line = []
         for k, v in value.items():
-            return f"{{\n{big_indent}{k}: {to_str(v, depth + 1)}\n  {indent}}}"
+            line.append(f"{big_indent}{k}: {to_str(v, depth + 1)}")
+        result = "\n".join(line)
+        return f'{{\n{result}\n  {indent}}}'
 
     return value
 

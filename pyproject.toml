@@ -2,7 +2,7 @@
 name = "hexlet-code"
 packages = [{ include = "gendiff" },]
 version = "0.1.0"
-description = ""
+description = "Diff calculator"
 authors = ["Alex Subach <alex_28.02@mail.ru>"]
 
 [tool.poetry.scripts]

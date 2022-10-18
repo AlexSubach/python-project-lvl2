@@ -53,8 +53,6 @@ def tree_to_stylish(tree, depth=0):
         line2 = f"{indent}+ {key}: {value2}"
         return line1 + line2
 
-    return "Non type\n"
-
 
 def render_stylish(diff):
     return tree_to_stylish(diff)

@@ -1,21 +1,25 @@
 from gendiff import generate_diff
 
 
-def test_generate_diff_json(file1_json_path, file2_json_path, result_json):
-    assert generate_diff(file1_json_path, file2_json_path) == result_json
+def test_json_first(file1_json, file2_json, result_json_first):
+    assert generate_diff(file1_json, file2_json) == result_json_first
 
 
-def test_generate_diff_yml(file1_yml_path, file2_yml_path, result_yml):
-    assert generate_diff(file1_yml_path, file2_yml_path) == result_yml
+def test_yml_first(file1_yml, file2_yml, result_json_first):
+    assert generate_diff(file1_yml, file2_yml) == result_json_first
 
 
-def test_generate_diff_stylish_json(file1_json_tree_path, file2_json_tree_path, result_stylish_tree):
-    assert generate_diff(file1_json_tree_path, file2_json_tree_path, format_name='stylish') == result_stylish_tree
+def test_stylish_json(file1_json_tree, file2_json_tree, result_stylish):
+    assert generate_diff(file1_json_tree, file2_json_tree) == result_stylish
 
 
-def test_generate_diff_stylish_yml(file1_yaml_tree_path, file2_yaml_tree_path, result_yaml_stylish_tree):
-    assert generate_diff(file1_yaml_tree_path, file2_yaml_tree_path, format_name='stylish') == result_yaml_stylish_tree
+def test_stylish_yml(file1_yaml_tree, file2_yaml_tree, result_stylish):
+    assert generate_diff(file1_yaml_tree, file2_yaml_tree) == result_stylish
 
 
-def test_generate_diff_plain(file1_json_path, file2_json_path, result_plain):
-    assert generate_diff(file1_json_path, file2_json_path, format_name='plain') == result_plain
+def test_plain(file1_json_tree, file2_json_tree, result_plain):
+    assert generate_diff(file1_json_tree, file2_json_tree, format_name='plain') == result_plain
+
+
+def test_json(file1_json_tree, file2_json_tree, result_json):
+    assert generate_diff(file1_json_tree, file2_json_tree, format_name='json') == result_json

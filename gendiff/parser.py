@@ -20,4 +20,3 @@ def get_data(file_path):
         return parse(file, extension)
     elif extension == ".yaml" or extension == ".yml":
         return parse(file, extension)
-

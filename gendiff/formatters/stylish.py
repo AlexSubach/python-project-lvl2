@@ -49,7 +49,7 @@ def tree_to_stylish(tree, depth=0):
         return f"{indent}  {key}: {value}"
 
     elif tree["type"] == "updated":
-        line1 = f"{indent}- {key}: {value1}\n"
+        line1 = f"{indent}- {key}: {value1}"
         line2 = f"{indent}+ {key}: {value2}"
         return line1 + line2
 

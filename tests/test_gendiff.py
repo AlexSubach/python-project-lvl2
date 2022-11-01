@@ -1,14 +1,6 @@
 from gendiff import generate_diff
 
 
-def test_json_first(file1_json, file2_json, result_json_first):
-    assert generate_diff(file1_json, file2_json) == result_json_first
-
-
-def test_yml_first(file1_yml, file2_yml, result_json_first):
-    assert generate_diff(file1_yml, file2_yml) == result_json_first
-
-
 def test_stylish_json(file1_json_tree, file2_json_tree, result_stylish):
     assert generate_diff(file1_json_tree, file2_json_tree) == result_stylish
 
